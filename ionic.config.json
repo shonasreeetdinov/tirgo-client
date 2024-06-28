@@ -1,0 +1,7 @@
+{
+  "name": "Tirgo Client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

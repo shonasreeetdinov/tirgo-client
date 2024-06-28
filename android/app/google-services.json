@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "477373484556",
+    "project_id": "tirgo-client",
+    "storage_bucket": "tirgo-client.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477373484556:android:961abe86dbc91368a46829",
+        "android_client_info": {
+          "package_name": "io.tirgo.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA5lhVUA_a3-Gd9TWD1Giic6uBYMVegyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

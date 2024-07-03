@@ -44,6 +44,7 @@ export class FcmService {
       }
 
       if (permStatus.receive !== 'granted') {
+        this.authService.alertLocation('Упс', 'Для получения заказов нам нужно знать вашу геопозицию. Пожалуйста включите разрешение на использование местоположения в приложении Tirgo Driver');
         throw new Error('User denied permissions!');
       }
       await PushNotifications.register();

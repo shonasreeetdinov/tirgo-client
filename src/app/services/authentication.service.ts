@@ -10,6 +10,7 @@ const TOKEN_KEY = 'jwttirgoclienttoken';
 const REF_TOKEN_KEY = 'jwttirgoreftoken';
 const API_URL = 'https://admin.tirgo.io/api';
 // const API_URL = 'http://192.168.1.58:7790';
+import { NativeSettings, AndroidSettings, IOSSettings } from 'capacitor-native-settings';
 
 import {Browser} from "@capacitor/browser";
 
@@ -412,5 +413,32 @@ export class AuthenticationService {
   }
   setFcmToken(data) {
     return this.http.post(API_URL + '/users/set-fcm-token', data)
+  }
+
+  async alertLocation(header: string, text: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: text,
+      cssClass: 'customAlert',
+      buttons: [
+        {
+          text: 'Настройки',
+          handler: async () => {
+            NativeSettings.open({
+              optionAndroid: AndroidSettings.Location,
+              optionIOS: IOSSettings.App
+            })
+            // cordova.plugins.diagnostic.switchToLocationSettings();
+          }
+        },
+        {
+          text: 'Закрыть',
+          handler: async () => {
+            this.alertController.dismiss();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

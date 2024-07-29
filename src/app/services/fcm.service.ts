@@ -65,7 +65,8 @@ export class FcmService {
         const fcm_token = token?.value;
         console.log("my token", fcm_token);
         
-        this.authService.setFcmToken({userId: this.authService.currentUser.id, fcmToken: fcm_token}).subscribe((res:any) => {})
+        this.authService.setFcmToken({userId: this.authService.currentUser.id, fcmToken: fcm_token}).subscribe((res:any) => {          
+        })
         let go = 1;
         const saved_token = JSON.parse((await this.storageService.getStorage(FCM_TOKEN)).value);
         

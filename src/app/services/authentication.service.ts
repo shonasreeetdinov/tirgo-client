@@ -1,18 +1,17 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {User} from '../user';
 import {Storage} from '@ionic/storage';
 import {AlertController} from "@ionic/angular";
-import { jwtDecode } from 'jwt-decode';
 const TOKEN_KEY = 'jwttirgoclienttoken';
 const REF_TOKEN_KEY = 'jwttirgoreftoken';
 const API_URL = 'https://admin.tirgo.io/api';
 // const API_URL = 'http://192.168.1.58:7790';
 import { NativeSettings, AndroidSettings, IOSSettings } from 'capacitor-native-settings';
-
+import {jwtDecode} from "jwt-decode";
 import {Browser} from "@capacitor/browser";
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -415,6 +414,12 @@ export class AuthenticationService {
     return this.http.post(API_URL + '/users/set-fcm-token', data)
   }
 
+  getAppVersion(appType) {
+    return this.http.get(API_URL + '/users/get-app-version?appType='+appType);
+  }
+  updateActivity(user_id) {
+    return this.http.post(API_URL + '/users/update-activity', {user_id: user_id})
+  }
   async alertLocation(header: string, text: string) {
     const alert = await this.alertController.create({
       header: header,
@@ -442,3 +447,4 @@ export class AuthenticationService {
     await alert.present();
   }
 }
+
